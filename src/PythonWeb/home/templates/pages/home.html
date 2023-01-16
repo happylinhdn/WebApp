@@ -1,0 +1,19 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<p>Tên: Đỗ Nhất Linh</p>
+<p>Năm: 1988</p>
+<p>Trường: Đại học Ngân Hàng Tp.HCM</p>   
+<div class="row">
+    <div class="col-sm-2">
+        {% if user.username %}
+            <p>Xin chào {{user.username}} || {{user.email}}</p>
+        {% endif %}
+    </div>
+</div>
+
+
+    
+{% endblock %}

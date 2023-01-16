@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:latest'
+    expose:
+      - '5432'
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: zuri
+      POSTGRES_DB: zuri
+      POSTGRES_PASSWORD: zuri1234
+    volumes:
+      - pgdata:/var/lib/posgresql/data
+  django:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/src
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+volumes:
+  pgdata:
